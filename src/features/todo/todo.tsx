@@ -17,7 +17,7 @@ export function Todo() {
     return (
         <div>
         <input
-          aria-label="Set increment amount"
+          aria-label="Set todo summary"
           value={todoSummary}
           onChange={e => setTodoSummary(e.target.value)}
         />
