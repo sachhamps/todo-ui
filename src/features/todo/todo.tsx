@@ -1,7 +1,6 @@
-import store from '../../app/store'
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, selectTodos } from './slice';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { addTodo, selectTodos, selectTodoEntities } from './slice';
 
 const uid = function(){
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -9,8 +8,11 @@ const uid = function(){
 
 export function Todo() {
     const dispatch = useDispatch()
+    const store = useStore()
+
     const [todoSummary, setTodoSummary] = useState('');
-    const todos = useSelector(selectTodos)
+    const todos_entities = useSelector(selectTodoEntities)
+    const todos = Object.values(todos_entities)
 
     return (
         <div>
@@ -21,7 +23,7 @@ export function Todo() {
         />
         <button
           onClick={() =>
-            dispatch(addTodo({todoId: uid(), todoSummary: todoSummary, dateAdded: 'b'}))
+            dispatch(addTodo({todoId: uid(), todoSummary: todoSummary, dateAdded: new Date().toLocaleDateString()}))
           }
         >
           Add To Do
