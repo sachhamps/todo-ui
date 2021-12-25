@@ -11,8 +11,7 @@ export function Todo() {
     const store = useStore()
 
     const [todoSummary, setTodoSummary] = useState('');
-    const todos_entities = useSelector(selectTodoEntities)
-    const todos = Object.values(todos_entities)
+    const todos = useSelector(selectTodoEntities)
 
     return (
         <div>
@@ -30,7 +29,7 @@ export function Todo() {
         </button>
         <div>
             <h3>To Do List is:</h3>
-            {todos.map((todo: any) => <div key={todo.todoId}>{todo.todoSummary}</div>)}
+            {Object.values(todos).map((todo: any) => <div key={todo.todoId}>{todo.todoSummary}</div>)}
         </div>
       </div>
       );
