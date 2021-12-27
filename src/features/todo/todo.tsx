@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useDispatch, } from 'react-redux';
-import { addTodo } from './slice';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, selectTodoEntities } from './slice';
+import { TodoList } from './todo-list';
 
 const uid = function(){
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -9,7 +10,21 @@ const uid = function(){
 export function Todo() {
     const dispatch = useDispatch()
     const [todoSummary, setTodoSummary] = useState('');
-    console.log("Rendering Todo Component")
+    const [isSubmitted, setSubmission] = useState(false)
+    const todos = useSelector(selectTodoEntities)
+
+    // console.log("Rendering Todo Component")
+
+    const handleSubmission = () => {
+        const todoSum = todoSummary;
+        setTodoSummary('')
+        return dispatch(addTodo({todoId: uid(), todoSummary: todoSum, dateAdded: new Date().toLocaleDateString()}))
+    }
+    
+    // useEffect(() => {
+    //     setTodoSummary('');
+    //   }, [isSubmitted]);
+    
 
     return (
         <div>
@@ -19,12 +34,11 @@ export function Todo() {
           onChange={e => setTodoSummary(e.target.value)}
         />
         <button
-          onClick={() =>
-            dispatch(addTodo({todoId: uid(), todoSummary: todoSummary, dateAdded: new Date().toLocaleDateString()}))
-          }
+          onClick={handleSubmission}
         >
           Add To Do
         </button>
+        <TodoList />
       </div>
       );
 }
