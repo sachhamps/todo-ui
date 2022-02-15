@@ -14,17 +14,14 @@ export function Todo() {
     const todos = useSelector(selectTodoEntities)
 
     // console.log("Rendering Todo Component")
-
-    const handleSubmission = () => {
-        const todoSum = todoSummary;
-        setTodoSummary('')
-        return dispatch(addTodo({todoId: uid(), todoSummary: todoSum, dateAdded: new Date().toLocaleDateString()}))
-    }
     
-    // useEffect(() => {
-    //     setTodoSummary('');
-    //   }, [isSubmitted]);
-    
+    useEffect(() => {
+      if(isSubmitted){
+        dispatch(addTodo({todoId: uid(), todoSummary: todoSummary, dateAdded: new Date().toLocaleDateString()}))
+        setTodoSummary('');
+        setSubmission(false)
+      }
+    }, [isSubmitted]);
 
     return (
         <div>
@@ -34,7 +31,7 @@ export function Todo() {
           onChange={e => setTodoSummary(e.target.value)}
         />
         <button
-          onClick={handleSubmission}
+          onClick={() => setSubmission(true)}
         >
           Add To Do
         </button>
