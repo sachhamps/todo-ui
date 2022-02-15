@@ -1,19 +1,33 @@
-import React, { useCallback } from "react";
-import { useSelector } from 'react-redux';
-import { selectTodoEntities } from './slice';
+import React, { useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTodoEntities, removeTodo } from './slice';
 
 
 // potentially use useCallback here
 export const TodoList = React.memo(() => {
+    const dispatch = useDispatch()
     console.log('Rendering List Component')
     const todos = useSelector(selectTodoEntities)
     console.log(Object.values(todos))
+    // const [remove, setRemove] = 
 
     return (
         <div>
             <h3>To Do List is:</h3>
             <div>
-            {Object.values(todos).map((todo: any) => <div key={todo.todoId}>{todo.todoSummary}</div>)}
+            {
+            Object.values(todos).map((todo: any) => 
+                <div key={todo.todoId}>{todo.todoSummary}
+                    <div>
+                        <button
+                            onClick={() => dispatch(removeTodo(todo.todoId))}
+                        >
+                        Remove
+                        </button>
+                    </div>
+                </div>
+            )
+            }
             </div>
         </div>
       );

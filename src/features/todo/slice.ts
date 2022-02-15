@@ -16,12 +16,15 @@ const todosSlice = createSlice({
         addTodo: (state, action: PayloadAction<Todo>) => {
             todosEntityAdapter.addOne(state, action.payload)
             console.log(current(state))
+        },
+        removeTodo: (state, key) => {
+            todosEntityAdapter.removeOne(state, key)
         }
     }
 })
 
 // action
-export const { addTodo } = todosSlice.actions
+export const { addTodo, removeTodo } = todosSlice.actions
 
 // selectors
 export const selectTodos = (state: any) => state.todos
