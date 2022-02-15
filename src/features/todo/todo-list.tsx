@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTodoEntities, removeTodo } from './slice';
-
+import '../../App.css'
 
 // potentially use useCallback here
 export const TodoList = React.memo(() => {
@@ -9,15 +9,14 @@ export const TodoList = React.memo(() => {
     console.log('Rendering List Component')
     const todos = useSelector(selectTodoEntities)
     console.log(Object.values(todos))
-    // const [remove, setRemove] = 
 
-    return (
+    return (    
         <div>
             <h3>To Do List is:</h3>
             <div>
             {
             Object.values(todos).map((todo: any) => 
-                <div key={todo.todoId}>{todo.todoSummary}
+                <div  className="card" key={todo.todoId}>{todo.todoSummary}
                     <div>
                         <button
                             onClick={() => dispatch(removeTodo(todo.todoId))}
