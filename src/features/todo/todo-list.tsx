@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTodoEntities, removeTodo } from './slice';
 import '../../App.css'
+import Button from 'react-bootstrap/Button';
 
 // potentially use useCallback here
 export const TodoList = React.memo(() => {
@@ -16,13 +17,14 @@ export const TodoList = React.memo(() => {
             <div>
             {
             Object.values(todos).map((todo: any) => 
-                <div  className="card" key={todo.todoId}>{todo.todoSummary}
+                <div /*className="card"*/ key={todo.todoId}>
+                    {todo.todoSummary}
                     <div>
-                        <button
+                        <Button variant="danger" className="btn"
                             onClick={() => dispatch(removeTodo(todo.todoId))}
                         >
                         Remove
-                        </button>
+                        </Button>
                     </div>
                 </div>
             )

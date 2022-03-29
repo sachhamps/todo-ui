@@ -8,10 +8,14 @@ function App() {
   return (
 
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <header className="App">
+          <h1>
+          TO DO APP
+          </h1>
+        </header>
         <Todo />
-        <p>
+        {/* <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
@@ -21,8 +25,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
-      </header>
+        </a> */}
     </div>
   );
 }

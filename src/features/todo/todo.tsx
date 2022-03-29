@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, selectTodoEntities } from './slice';
 import { TodoList } from './todo-list';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 const uid = function(){
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -25,17 +28,19 @@ export function Todo() {
 
     return (
         <div>
-        <input
-          aria-label="Set todo summary"
-          value={todoSummary}
-          onChange={e => setTodoSummary(e.target.value)}
-        />
-        <button
-          onClick={() => setSubmission(true)}
-        >
-          Add To Do
-        </button>
-        <TodoList />
+          <InputGroup className="w-50">
+            <FormControl
+              aria-label="Set todo summary"
+              value={todoSummary}
+              onChange={e => setTodoSummary(e.target.value)}
+            />
+            <Button variant="info"
+              onClick={() => setSubmission(true)}
+            >
+              Add To Do
+            </Button>
+          </InputGroup>
+          <TodoList />
       </div>
       );
 }
