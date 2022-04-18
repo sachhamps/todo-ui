@@ -11,7 +11,7 @@ function App() {
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <header className="App">
           <h1>
-          TO DO APP
+          To do:
           </h1>
         </header>
         <Todo />

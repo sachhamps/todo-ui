@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 25px 50px 75px;
 }
 
 .App-logo {
@@ -70,4 +71,20 @@
   flex: 50%;
   padding: 10px;
   height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.todobox {
+  width:700px;
+  padding: 25px;
+  margin: auto;
+}
+
+.todoitem {
+  padding: 20px;
+}
+
+.test {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
 }

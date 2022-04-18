@@ -13,11 +13,11 @@ export const TodoList = React.memo(() => {
 
     return (    
         <div>
-            <h3>To Do List is:</h3>
+            <h3>-</h3>
             <div>
             {
             Object.values(todos).map((todo: any) => 
-                <div /*className="card"*/ key={todo.todoId}>
+                <div className="todoitem" key={todo.todoId}>
                     {todo.todoSummary}
                     <div>
                         <Button variant="danger" className="btn"

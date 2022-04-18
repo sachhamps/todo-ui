@@ -27,8 +27,8 @@ export function Todo() {
     }, [isSubmitted]);
 
     return (
-        <div>
-          <InputGroup className="w-50">
+        <div className="todobox">
+          <InputGroup>
             <FormControl
               aria-label="Set todo summary"
               value={todoSummary}
